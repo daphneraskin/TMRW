@@ -1,15 +1,13 @@
 '''
 Author: Daphne Raskin
-
 Purpose: This program is used to manipulate the raw rack data csv that the TMRW platform creates and extract more information.
 
-What it does: The raw rack data csv stores ticket information in rows. This program reads in all of that data, and for each ticket, stores many more metrics. 
+What it does: The raw rack data csv stores ticket information in rows. This program outputs a new csv that stores all of the original ticket data with many more metrics.
+    Inputted ticket data: RACK_ID, USAGE_END_TIME_UTC, DURATION_SECONDS, UNIT_ID, ORDER_ID
+    Outputted ticket data: RACK_ID, DURATION_SECONDS, UNIT_ID, NORMALIZED_UNIT, ORDER_ID, DATE, TIME, HOUR, ORDERS_TODAY, ROLLING_HOUR_START, TRANSIT_TIME_LAST_HOUR, DURATIONS_LAST_HOUR_LIST, DAY_OF_WEEK, TOTAL_DURATION_TODAY, ALL_DURATION_SECONDS_TODAY_LIST, AVERAGE_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, SD_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, Z_SCORE_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, SD_AVERAGE_DURATION_FOR_RACK, TIMED_OUT, Z_SCORE_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, TOMORROW, TOMORROW_TOTAL_DURATION, TOMORROW_TRANSIT_TIME_LAST_HOUR, TOMORROW_TICKET_DURATION_LAST_HOUR_LIST, TOMORROW_DAY_OF_WEEK, TOMORROW_DOW_AVERAGE_TOTAL_DURATION, TOMORROW_DOW_SD_TOTAL_DURATION, TODAY_DOW_AVERAGE_TOTAL_DURATION, TODAY_DOW_SD_TOTAL_DURATION
 
-Inputted ticket data: RACK_ID, USAGE_END_TIME_UTC, DURATION_SECONDS, UNIT_ID, ORDER_ID
-Outputted ticket data: RACK_ID, DURATION_SECONDS, UNIT_ID, NORMALIZED_UNIT, ORDER_ID, DATE, TIME, HOUR, ORDERS_TODAY, ROLLING_HOUR_START, TRANSIT_TIME_LAST_HOUR, DURATIONS_LAST_HOUR_LIST, DAY_OF_WEEK, TOTAL_DURATION_TODAY, ALL_DURATION_SECONDS_TODAY_LIST, AVERAGE_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, SD_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, Z_SCORE_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, SD_AVERAGE_DURATION_FOR_RACK, TIMED_OUT, Z_SCORE_TRANSIT_TIME_LAST_HOUR_FOR_RACK_FOR_HOUR, TOMORROW, TOMORROW_TOTAL_DURATION, TOMORROW_TRANSIT_TIME_LAST_HOUR, TOMORROW_TICKET_DURATION_LAST_HOUR_LIST, TOMORROW_DAY_OF_WEEK, TOMORROW_DOW_AVERAGE_TOTAL_DURATION, TOMORROW_DOW_SD_TOTAL_DURATION, TODAY_DOW_AVERAGE_TOTAL_DURATION, TODAY_DOW_SD_TOTAL_DURATION
-
-How to run it: 
-You can run this script on your computer once you edit the file_path and output_path variables located below the rack_data class
+How to run: 
+You can run this script on your computer once you edit the file_path and output_path variables located below the rack_data class instantiation at the bottom.
     file_path : the exact path of the raw rack data csv on your computer
     output_path : the path where you want the program's outputted csv to be stored
 '''
@@ -81,7 +79,7 @@ class rack_data(ABC):
         
     def load_in_csv(self, path):
         
-        # loads in csv, returns a python dictionary with dataframe information
+        # loads in csv, returns a python dictionary containing csv data
         self.path = path
         
         df = pd.read_csv(path)
