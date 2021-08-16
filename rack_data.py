@@ -1,6 +1,6 @@
 '''
 Author: Daphne Raskin
-Purpose: This program is used to manipulate the raw rack data csv that the TMRW platform creates and extract more information.
+Purpose: This program is used to extract more information from the raw rack data csv that the TMRW platform creates.
 
 What it does: The raw rack data csv stores ticket information in rows. This program outputs a new csv that stores all of the original ticket data with many more metrics.
     Inputted ticket data: RACK_ID, USAGE_END_TIME_UTC, DURATION_SECONDS, UNIT_ID, ORDER_ID
